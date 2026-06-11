@@ -16,4 +16,5 @@ collections:
       - { label: Categoría, name: categoria, widget: select, options: [Cafés, Pastelería] }
       - { label: Descripción, name: descripcion, widget: string }
       - { label: Precio, name: precio, widget: string }
+      - { label: Imagen, name: imagen, widget: image, required: false }
       - { label: Disponible, name: disponible, widget: boolean, default: true }

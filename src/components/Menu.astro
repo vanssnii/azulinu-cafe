@@ -1,22 +1,11 @@
 ---
-const categorias = [
-  {
-    nombre: "Cafés",
-    items: [
-      { nombre: "Espresso", descripcion: "Café negro concentrado", precio: "2.500" },
-      { nombre: "Cappuccino", descripcion: "Espresso con leche vaporizada", precio: "3.200" },
-      { nombre: "Latte", descripcion: "Espresso con leche cremosa", precio: "3.500" },
-    ]
-  },
-  {
-    nombre: "Pastelería",
-    items: [
-      { nombre: "Croissant", descripcion: "Masa hojaldrada, mantequilla francesa", precio: "2.800" },
-      { nombre: "Tarta de limón", descripcion: "Crema cítrica, merengue tostado", precio: "3.800" },
-      { nombre: "Brownie", descripcion: "Chocolate 70%, nueces tostadas", precio: "3.200" },
-    ]
-  }
-];
+const menuFiles = await (Astro as any).glob('../content/menu/*.md');
+
+const items = menuFiles
+  .filter((item: any) => item.frontmatter.disponible)
+  .map((item: any) => item.frontmatter);
+
+const categorias = [...new Set(items.map((item: any) => (item as any).categoria))] as string[];
 ---
 
 <section class="menu" id="menu">
@@ -24,22 +13,34 @@ const categorias = [
     <p class="menu__eyebrow">Lo que ofrecemos</p>
     <h2 class="menu__title">Nuestro menú</h2>
 
-    {categorias.map((categoria) => (
-      <div class="menu__categoria">
-        <h3 class="menu__categoria-nombre">{categoria.nombre}</h3>
-        <div class="menu__items">
-          {categoria.items.map((item) => (
-            <div class="menu__item">
-              <div class="menu__item-info">
-                <p class="menu__item-nombre">{item.nombre}</p>
-                <p class="menu__item-descripcion">{item.descripcion}</p>
-              </div>
-              <p class="menu__item-precio">${item.precio}</p>
-            </div>
-          ))}
+    {categorias.length === 0 ? (
+      <p class="menu__vacio">Menú en preparación.</p>
+    ) : (
+      categorias.map((categoria) => (
+        <div class="menu__categoria">
+          <h3 class="menu__categoria-nombre">{categoria}</h3>
+          <div class="menu__items">
+            {items
+             .filter((item: any) => item.categoria === categoria)
+             .map((item: any) => (
+                <div class="menu__item">
+                  {item.imagen && (
+                    <div class="menu__item-imagen">
+                      <img src={item.imagen} alt={item.nombre} />
+                    </div>
+                  )}
+                  <div class="menu__item-info">
+                    <p class="menu__item-nombre">{item.nombre}</p>
+                    <p class="menu__item-descripcion">{item.descripcion}</p>
+                  </div>
+                  <p class="menu__item-precio">${item.precio}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    )}
   </div>
 </section>
 
@@ -68,6 +69,11 @@ const categorias = [
     margin-bottom: var(--space-xl);
   }
 
+  .menu__vacio {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+  }
+
   .menu__categoria {
     margin-bottom: var(--space-xl);
   }
@@ -94,6 +100,24 @@ const categorias = [
     gap: var(--space-lg);
   }
 
+  .menu__item-imagen {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .menu__item-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .menu__item-info {
+    flex: 1;
+  }
+
   .menu__item-nombre {
     font-size: var(--text-base);
     color: var(--color-text);
@@ -111,10 +135,10 @@ const categorias = [
     color: var(--color-accent);
     white-space: nowrap;
   }
+
   @media (max-width: 768px) {
     .menu {
       padding: var(--space-xl) var(--space-md);
     }
   }
 </style>
-
