@@ -1,0 +1,114 @@
+---
+const categorias = [
+  {
+    nombre: "Cafés",
+    items: [
+      { nombre: "Espresso", descripcion: "Café negro concentrado", precio: "2.500" },
+      { nombre: "Cappuccino", descripcion: "Espresso con leche vaporizada", precio: "3.200" },
+      { nombre: "Latte", descripcion: "Espresso con leche cremosa", precio: "3.500" },
+    ]
+  },
+  {
+    nombre: "Pastelería",
+    items: [
+      { nombre: "Croissant", descripcion: "Masa hojaldrada, mantequilla francesa", precio: "2.800" },
+      { nombre: "Tarta de limón", descripcion: "Crema cítrica, merengue tostado", precio: "3.800" },
+      { nombre: "Brownie", descripcion: "Chocolate 70%, nueces tostadas", precio: "3.200" },
+    ]
+  }
+];
+---
+
+<section class="menu" id="menu">
+  <div class="menu__inner">
+    <p class="menu__eyebrow">Lo que ofrecemos</p>
+    <h2 class="menu__title">Nuestro menú</h2>
+
+    {categorias.map((categoria) => (
+      <div class="menu__categoria">
+        <h3 class="menu__categoria-nombre">{categoria.nombre}</h3>
+        <div class="menu__items">
+          {categoria.items.map((item) => (
+            <div class="menu__item">
+              <div class="menu__item-info">
+                <p class="menu__item-nombre">{item.nombre}</p>
+                <p class="menu__item-descripcion">{item.descripcion}</p>
+              </div>
+              <p class="menu__item-precio">${item.precio}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .menu {
+    padding: var(--space-2xl) var(--space-lg);
+    background-color: var(--color-surface);
+  }
+
+  .menu__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .menu__eyebrow {
+    font-size: var(--text-sm);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .menu__title {
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .menu__categoria {
+    margin-bottom: var(--space-xl);
+  }
+
+  .menu__categoria-nombre {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .menu__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .menu__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+  .menu__item-nombre {
+    font-size: var(--text-base);
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .menu__item-descripcion {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .menu__item-precio {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+</style>
