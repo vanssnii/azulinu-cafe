@@ -2,6 +2,9 @@
 ---
 
 <section class="hero">
+  <div class="hero__imagen">
+    <img src="/images/hero.jpg" alt="Interior del café" />
+  </div>
   <div class="hero__inner">
     <p class="hero__eyebrow">Bienvenidos</p>
     <h1 class="hero__title">Un lugar para<br />quedarse</h1>
@@ -12,17 +15,28 @@
 
 <style>
   .hero {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    background-color: var(--color-background);
-    padding: var(--space-xl) var(--space-lg);
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    align-items: stretch;
+  }
+
+  .hero__imagen {
+    overflow: hidden;
+  }
+
+  .hero__imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .hero__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-2xl) var(--space-xl);
+    background-color: var(--color-background);
   }
 
   .hero__eyebrow {
@@ -51,4 +65,39 @@
     display: inline-block;
     padding: var(--space-md) var(--space-xl);
     background-color: var(--color-primary);
-    color: var(--colo
+    color: var(--color-background);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+  }
+
+  .hero__cta:hover {
+    background-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero__imagen {
+      height: 300px;
+    }
+
+    .hero__inner {
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .hero__title {
+      font-size: var(--text-2xl);
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-base);
+    }
+  }
+</style>

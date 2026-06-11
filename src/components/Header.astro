@@ -30,4 +30,30 @@
     align-items: center;
   }
 
-  .header__log
+  .header__logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+  }
+
+  .header__nav {
+    display: flex;
+    gap: var(--space-lg);
+    font-size: var(--text-sm);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .header__nav a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .header__inner {
+      padding: var(--space-md);
+    }
+
+    .header__nav {
+      gap: var(--space-md);
+    }
+  }
+</style>

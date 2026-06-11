@@ -16,7 +16,7 @@
       </p>
     </div>
     <div class="nosotros__imagen">
-      <div class="nosotros__imagen-placeholder"></div>
+      <img src="/images/nosotros.jpg" alt="Nuestro equipo" />
     </div>
   </div>
 </section>
@@ -57,10 +57,25 @@
     margin-bottom: var(--space-md);
   }
 
-  .nosotros__imagen-placeholder {
+  .nosotros__imagen img {
     width: 100%;
-    aspect-ratio: 4 / 5;
-    background-color: var(--color-border);
+    object-fit: cover;
     border-radius: var(--radius-md);
+    aspect-ratio: 3 / 2;
+  }
+  
+  @media (max-width: 768px) {
+    .nosotros {
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .nosotros__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .nosotros__imagen {
+      order: -1;
+    }
   }
 </style>
