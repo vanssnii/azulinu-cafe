@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: menu
+    label: Menú
+    folder: src/content/menu
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Nombre, name: nombre, widget: string }
+      - { label: Categoría, name: categoria, widget: select, options: [Cafés, Pastelería] }
+      - { label: Descripción, name: descripcion, widget: string }
+      - { label: Precio, name: precio, widget: string }
+      - { label: Disponible, name: disponible, widget: boolean, default: true }
