@@ -1,11 +1,11 @@
 ---
-const menuFiles = await (Astro as any).glob('../content/menu/*.md');
+const menuGlob = import.meta.glob('../content/menu/*.md', { eager: true });
 
-const items = menuFiles
-  .filter((item: any) => item.frontmatter.disponible)
-  .map((item: any) => item.frontmatter);
+const items = Object.values(menuGlob)
+  .map((item: any) => item.frontmatter)
+  .filter((item: any) => item.disponible);
 
-const categorias = [...new Set(items.map((item: any) => (item as any).categoria))] as string[];
+const categorias = [...new Set(items.map((item: any) => item.categoria))] as string[];
 ---
 
 <section class="menu" id="menu">
