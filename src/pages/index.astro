@@ -12,15 +12,3 @@ import Contacto from '../components/Contacto.astro';
   <Nosotros />
   <Contacto />
 </BaseLayout>
-
-<script>
-  if ((window as any).netlifyIdentity) {
-    (window as any).netlifyIdentity.on("init", (user: any) => {
-      if (!user) {
-        (window as any).netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
