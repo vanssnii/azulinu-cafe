@@ -1,0 +1,66 @@
+---
+---
+
+<section class="nosotros" id="nosotros">
+  <div class="nosotros__inner">
+    <div class="nosotros__texto">
+      <p class="nosotros__eyebrow">Nuestra historia</p>
+      <h2 class="nosotros__title">Un café con alma</h2>
+      <p class="nosotros__parrafo">
+        Nacimos en 2018 con la idea de crear un espacio donde el café de especialidad 
+        y la pastelería artesanal se encontraran con un ambiente cálido y acogedor.
+      </p>
+      <p class="nosotros__parrafo">
+        Trabajamos con productores locales y granos de origen único, seleccionados 
+        cuidadosamente para ofrecerte una experiencia distinta en cada visita.
+      </p>
+    </div>
+    <div class="nosotros__imagen">
+      <div class="nosotros__imagen-placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nosotros {
+    padding: var(--space-2xl) var(--space-lg);
+    background-color: var(--color-background);
+  }
+
+  .nosotros__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .nosotros__eyebrow {
+    font-size: var(--text-sm);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .nosotros__title {
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .nosotros__parrafo {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+  }
+
+  .nosotros__imagen-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background-color: var(--color-border);
+    border-radius: var(--radius-md);
+  }
+</style>

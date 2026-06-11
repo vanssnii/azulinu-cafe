@@ -1,0 +1,89 @@
+---
+---
+
+<section class="contacto" id="contacto">
+  <div class="contacto__inner">
+    <div class="contacto__info">
+      <p class="contacto__eyebrow">Encuéntranos</p>
+      <h2 class="contacto__title">Visítanos</h2>
+      <div class="contacto__datos">
+        <div class="contacto__dato">
+          <p class="contacto__dato-label">Dirección</p>
+          <p class="contacto__dato-valor">Calle Ejemplo 123, Santiago</p>
+        </div>
+        <div class="contacto__dato">
+          <p class="contacto__dato-label">Horario</p>
+          <p class="contacto__dato-valor">Lunes a viernes, 8:00 – 20:00</p>
+          <p class="contacto__dato-valor">Sábado y domingo, 9:00 – 18:00</p>
+        </div>
+        <div class="contacto__dato">
+          <p class="contacto__dato-label">Contacto</p>
+          <p class="contacto__dato-valor">hola@cafe.cl</p>
+          <p class="contacto__dato-valor">+56 9 1234 5678</p>
+        </div>
+      </div>
+    </div>
+    <div class="contacto__mapa">
+      <div class="contacto__mapa-placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    padding: var(--space-2xl) var(--space-lg);
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  .contacto__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .contacto__eyebrow {
+    font-size: var(--text-sm);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .contacto__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .contacto__datos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .contacto__dato-label {
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  .contacto__dato-valor {
+    font-size: var(--text-base);
+    color: var(--color-background);
+    opacity: 0.8;
+    line-height: 1.8;
+  }
+
+  .contacto__mapa-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+</style>
