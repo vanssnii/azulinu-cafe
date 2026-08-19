@@ -2,41 +2,77 @@
 ---
 
 <section class="hero">
-  <div class="hero__imagen">
-    <img src="/images/hero.jpg" alt="Interior del café" />
+  <div class="hero__banner" aria-hidden="true">
+    <img src="/images/pattern1.png" alt="" class="hero__banner-img" width="2012" height="1197" />
   </div>
   <div class="hero__inner">
-    <p class="hero__eyebrow">Bienvenidos</p>
-    <h1 class="hero__title">Un lugar para<br />quedarse</h1>
-    <p class="hero__subtitle">Café de especialidad, pastelería artesanal<br />y buena compañía.</p>
-    <a href="#menu" class="hero__cta">Ver menú</a>
+    <h1 class="hero__brand">
+      <img
+        src="/images/logo1.png"
+        alt="Un lugar para quedarse"
+        class="hero__logo"
+        width="302"
+        height="302"
+      />
+    </h1>
+    <div class="hero__copy">
+      <p class="hero__eyebrow">Bienvenidos</p>
+      <p class="hero__subtitle">Café de especialidad, pastelería artesanal<br />y buena compañía.</p>
+      <a href="#menu" class="hero__cta">Ver menú</a>
+    </div>
   </div>
 </section>
 
 <style>
   .hero {
-    min-height: 70vh;
-    display: grid;
-    grid-template-columns: 55% 45%;
-    align-items: stretch;
+    display: flex;
+    flex-direction: column;
   }
 
-  .hero__imagen {
+  .hero__banner {
+    width: 100%;
+    height: clamp(160px, 22vw, 280px);
     overflow: hidden;
+    background-color: #0a5c3a;
   }
 
-  .hero__imagen img {
+  .hero__banner-img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 
   .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-xl);
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+    background-color: var(--color-background);
+  }
+
+  .hero__brand {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .hero__logo {
+    display: block;
+    width: auto;
+    height: clamp(220px, 36vh, 380px);
+  }
+
+  .hero__copy {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: var(--space-2xl) var(--space-xl);
-    background-color: var(--color-background);
+    align-items: flex-start;
+    max-width: 28rem;
   }
 
   .hero__eyebrow {
@@ -45,13 +81,6 @@
     text-transform: uppercase;
     color: var(--color-accent);
     margin-bottom: var(--space-md);
-  }
-
-  .hero__title {
-    font-size: var(--text-3xl);
-    color: var(--color-primary);
-    margin-bottom: var(--space-lg);
-    max-width: 600px;
   }
 
   .hero__subtitle {
@@ -71,7 +100,6 @@
     text-transform: uppercase;
     border-radius: var(--radius-sm);
     transition: background-color 0.2s ease;
-    align-self: flex-start;
   }
 
   .hero__cta:hover {
@@ -79,21 +107,24 @@
   }
 
   @media (max-width: 768px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-
-    .hero__imagen {
-      height: 300px;
+    .hero__banner {
+      height: 160px;
     }
 
     .hero__inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: var(--space-lg);
       padding: var(--space-xl) var(--space-md);
     }
 
-    .hero__title {
-      font-size: var(--text-2xl);
+    .hero__logo {
+      height: 200px;
+    }
+
+    .hero__copy {
+      align-items: center;
+      text-align: center;
     }
 
     .hero__subtitle {
